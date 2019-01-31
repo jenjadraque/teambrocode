@@ -26,7 +26,7 @@ rearcameraTrigger.onclick = function () {
     alert("Changing constraints.");
     var constraints = {
         video: {
-            facingMode: "environment",
+            facingMode: "view1",
             audio: false
         }
     };
