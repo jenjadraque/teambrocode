@@ -8,7 +8,7 @@ const cameraView = document.querySelector("#camera--view"),
 //Identify 2 views, Front Camera shooting and Rear Camera Shooting
 var constraints = {
 	video:{
-		facingMode: "user"
+		facingMode: "environment"
 	},
 	audio: false
 }
