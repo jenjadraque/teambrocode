@@ -21,7 +21,7 @@ const cameraView = document.querySelector("#camera--view"),
     rearcameraTrigger = document.querySelector("#rearcamera--trigger")
 
 
-rearcameraTrigger.onclick= function(){
+/*rearcameraTrigger.onclick= function(){
     //console.log(constraints);
     constraints = {
             video:{
@@ -31,7 +31,7 @@ rearcameraTrigger.onclick= function(){
         }
         return constraints;
         
-};
+}; */
 // Access the device camera and stream to cameraView
 function cameraStart() {
     console.log(constraints);
@@ -55,6 +55,25 @@ cameraTrigger.onclick = function() {
     cameraOutput.src = cameraSensor.toDataURL("image/webp");
     cameraOutput.classList.add("taken");
 };
+
+rearcameraTrigger.onclick= function(){
+    //console.log(constraints);
+    constraints = {
+            video:{
+                facingMode: view2
+            },
+            audio: false
+        }
+        cameraStart();
+
+        cameraSensor.width = cameraView.videoWidth;
+        cameraSensor.height = cameraView.videoWidth;
+        cameraSensor.getContext("2d").drawImage(cameraView,0,0);
+        cameraOutput.src = cameraSensor.toDataURL("image/webp");
+        cameraOutput.classList.add("taken");
+};
+
+
 
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
