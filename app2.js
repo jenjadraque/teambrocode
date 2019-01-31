@@ -42,7 +42,7 @@ function rearcameraStart(){
 		alert("success");
 	})
 	.catch(function(error){
-		console.error("Error. Rear Camera not found.");
+		console.error("Error. Rear Camera not found.", error);
 	});
 }
 
