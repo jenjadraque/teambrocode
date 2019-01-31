@@ -14,7 +14,7 @@ var constraints = {
 }
 var rearconstraints = {
 	video:{
-		facingMode: "environment"
+		facingMode: "user"
 	},
 	audio: false
 }
