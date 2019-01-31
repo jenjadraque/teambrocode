@@ -54,5 +54,9 @@ cameraTrigger.onclick = function() {
     cameraOutput.classList.add("taken");
 };
 
+rearcameraTrigger.onclick= function(){
+	rearcameraStart();
+};
+
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, rearcameraStart, false);
