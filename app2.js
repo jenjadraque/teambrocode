@@ -1,7 +1,3 @@
-// Set constraints for the video stream
-var view1  = "user";
-var view2 = "environment";
-
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
@@ -12,13 +8,13 @@ const cameraView = document.querySelector("#camera--view"),
 //Identify 2 views, Front Camera shooting and Rear Camera Shooting
 var constraints = {
 	video:{
-		facingMode: view1
+		facingMode: "user"
 	},
 	audio: false
 }
 var rearconstraints = {
 	video:{
-		facingMode: view2
+		facingMode: "environment"
 	},
 	audio: false
 }
@@ -38,10 +34,14 @@ function cameraStart() {
 
 //rearcamera
 function rearcameraStart(){
-	navigator.mediaDevices.getUserMedia(rearconstraints).then(function(stream){
+	navigator.mediaDevices
+	.getUserMedia(rearconstraints)
+	.then(function(stream){
 		track = stream.getTracks()[0];
 		cameraView.srcObject = stream;
-	}).catch(function(error){
+		alert("success");
+	})
+	.catch(function(error){
 		console.error("Error. Rear Camera not found.");
 	});
 }
@@ -57,6 +57,5 @@ cameraTrigger.onclick = function() {
 rearcameraTrigger.onclick= function(){
 	rearcameraStart();
 };
-
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, rearcameraStart, false);
