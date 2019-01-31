@@ -20,8 +20,21 @@ const cameraView = document.querySelector("#camera--view"),
     cameraTrigger = document.querySelector("#camera--trigger"),
     rearcameraTrigger = document.querySelector("#rearcamera--trigger")
 
+
+rearcameraTrigger.onclick= function(){
+    //console.log(constraints);
+    constraints = {
+            video:{
+                facingMode: view2
+            },
+            audio: false
+        }
+        return constraints;
+        
+};
 // Access the device camera and stream to cameraView
 function cameraStart() {
+    console.log(constraints);
     navigator.mediaDevices
         .getUserMedia(constraints)
         .then(function(stream) {
@@ -32,6 +45,8 @@ function cameraStart() {
         console.error("Oops. Something is broken.", error);
     });
 }
+
+
 // Take a picture when cameraTrigger is tapped
 cameraTrigger.onclick = function() {
     cameraSensor.width = cameraView.videoWidth;
@@ -41,14 +56,5 @@ cameraTrigger.onclick = function() {
     cameraOutput.classList.add("taken");
 };
 
-rearcameraTrigger.onclick= function(){
-    constraints = {
-            video:{
-                facingMode: view2
-            },
-            audio: false
-        }
-        console.log(constraints);
-};
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
